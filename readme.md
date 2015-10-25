@@ -12,6 +12,8 @@ $ npm install --save get-nepday-of-week
 
 ## Usage
 
+Note: If no argument is passed, the dayOfWeek for current day is returned.
+
 ```js
 var getNepdayOfWeek = require('get-nepday-of-week');
 
@@ -52,7 +54,7 @@ Default: `ne`
 ##### type
 
 Type: `string`
-Possible values: full (eg. Aaitabaar), short (eg. Aaita), min (eg. Aai)
+Possible values: `full` (eg. Aaitabaar), `short` (eg. Aaita), `min` (eg. Aai)
 
 
 ## License

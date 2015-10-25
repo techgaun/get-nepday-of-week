@@ -1,6 +1,6 @@
 {
   "name": "get-nepday-of-week",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Get nepali day of week from Date object or index (with 0 for Sunday and so on)",
   "license": "MIT",
   "repository": "techgaun/get-nepday-of-week",
