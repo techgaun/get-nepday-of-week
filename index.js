@@ -33,7 +33,7 @@ module.exports = function (inp, opts) {
     lang = 'en';
   }
 
-  if (!inp) {
+  if (inp === undefined) {
     inp = new Date().getDay();
   }
 
