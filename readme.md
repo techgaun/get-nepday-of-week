@@ -18,13 +18,13 @@ Note: If no argument is passed, the dayOfWeek for current day is returned.
 var getNepdayOfWeek = require('get-nepday-of-week');
 
 getNepdayOfWeek(new Date('2015/10/24'))
-//=>{ full: 'शनिवार', short: 'शनि', min: 'श' }
+//=>{ full: 'शनिबार', short: 'शनि', min: 'श' }
 
 getNepdayOfWeek({"lang": "en"})
 //=>{ full: 'Aaitabaar', short: 'Aaita', min: 'Aai' }
 
 getNepdayOfWeek(2)
-//=>{ full: 'मगलवार', short: 'मगल', min: 'म' }
+//=>{ full: 'मंगलबार', short: 'मंगल', min: 'मं' }
 
 getNepdayOfWeek(1, {"lang": "ne", "type": "short"})
 //=>सोम
