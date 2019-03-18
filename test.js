@@ -4,14 +4,14 @@ var sinon = require('sinon');
 var getNepdayOfWeek = require('./');
 
 it('should return Tuesday for index 2', function () {
-  var obj = {full: 'मगलवार', short: 'मगल', min: 'म'};
+  var obj = {full: 'मंगलबार', short: 'मंगल', min: 'मं'};
   assert.deepEqual(getNepdayOfWeek(2), obj);
   assert.strictEqual(typeof getNepdayOfWeek(2), 'object');
   obj = {full: 'Mangalbaar', short: 'Mangal', min: 'Man'};
   assert.deepEqual(getNepdayOfWeek(2, {lang: 'en'}), obj);
   assert.strictEqual(getNepdayOfWeek(2, {lang: 'en', type: 'short'}), 'Mangal');
-  assert.strictEqual(getNepdayOfWeek(2, {type: 'min'}), 'म');
-  assert.strictEqual(getNepdayOfWeek(2, {type: 'full'}), 'मगलवार');
+  assert.strictEqual(getNepdayOfWeek(2, {type: 'min'}), 'मं');
+  assert.strictEqual(getNepdayOfWeek(2, {type: 'full'}), 'मंगलबार');
   assert.strictEqual(getNepdayOfWeek(2, {type: 'full', lang: 'en'}), 'Mangalbaar');
 });
 
@@ -33,6 +33,6 @@ it('should return correct output for Date object', function () {
 it('should return correct output for current day', function () {
   var clock = sinon.useFakeTimers(new Date('2015/10/24').getTime());
   assert.strictEqual(getNepdayOfWeek({lang: 'en', type: 'min'}), 'Sha');
-  assert.deepEqual(getNepdayOfWeek(new Date()), {full: 'शनिवार', short: 'शनि', min: 'श'});
+  assert.deepEqual(getNepdayOfWeek(new Date()), {full: 'शनिबार', short: 'शनि', min: 'श'});
   clock.restore();
 });
