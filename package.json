@@ -1,6 +1,6 @@
 {
   "name": "get-nepday-of-week",
-  "version": "0.1.4",
+  "version": "1.0.0",
   "description": "Get nepali day of week from Date object or index (with 0 for Sunday and so on)",
   "license": "MIT",
   "repository": "techgaun/get-nepday-of-week",
@@ -10,33 +10,54 @@
     "url": "samar.techgaun.com"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=18"
   },
-  "scripts": {
-    "test": "xo --space 2 && mocha",
-    "cover": "istanbul cover --report html node_modules/.bin/_mocha -- -u exports -R spec test.js"
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    "./package.json": "./package.json"
   },
   "files": [
-    "index.js"
+    "dist"
   ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . && prettier --check .",
+    "format": "prettier --write .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepublishOnly": "npm run typecheck && npm run lint && npm run test && npm run build"
+  },
   "keywords": [
     "nepali",
     "getDay",
     "day of week",
     "week days",
+    "weekday",
     "Date",
-    "Nepali Date"
+    "Nepali Date",
+    "typescript"
   ],
-  "dependencies": {},
   "devDependencies": {
-    "mocha": "^2.2.5",
-    "sinon": "^1.17.2",
-    "xo": "^0.9.0"
-  },
-  "xo": {
-    "envs": [
-      "node",
-      "mocha"
-    ]
+    "@eslint/js": "^9.15.0",
+    "eslint": "^9.15.0",
+    "prettier": "^3.3.3",
+    "tsup": "^8.3.5",
+    "typescript": "^5.6.3",
+    "typescript-eslint": "^8.15.0",
+    "vitest": "^3.0.0"
   }
 }
