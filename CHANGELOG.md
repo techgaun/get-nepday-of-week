@@ -13,7 +13,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   or a `RangeError` (number outside `0`–`6`) instead of returning the error object.
 - Non-integer and `NaN` indexes, and invalid `Date` objects, now throw a `RangeError`
   instead of silently producing `undefined` names.
-- Requires Node.js 18 or newer (previously `>=0.10`).
+- Requires Node.js 22 or newer (previously `>=0.10`). The support policy is to track the
+  Node.js release lines still maintained upstream (currently 22, 24 and 26) and to drop a
+  line in a minor release once it reaches end of life.
 
 ### Added
 
@@ -35,9 +37,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Internal
 
-- Tests migrated from mocha + sinon to vitest.
-- xo replaced with prettier and typescript-eslint.
-- Travis CI replaced with GitHub Actions (Node 18, 20, 22).
+- Tests migrated from mocha + sinon to vitest 5.
+- xo replaced with prettier and typescript-eslint (ESLint 10).
+- Built with tsup 9 and TypeScript 6.
+- Travis CI replaced with GitHub Actions (Node 22, 24, 26); `.nvmrc` added.
 
 ## 0.1.4 and earlier
 

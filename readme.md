@@ -3,7 +3,14 @@
 > Get nepali day of week from Date object or index (with 0 for Sunday and so on)
 
 Written in TypeScript, ships ESM and CommonJS builds with type definitions, has zero
-dependencies and works in Node.js (18+) and browsers.
+dependencies and works in Node.js (22+) and browsers.
+
+### Node.js support policy
+
+Only Node.js release lines that are still in maintenance by the Node.js project are
+supported. That is currently Node.js 22, 24 and 26, which is what CI runs against;
+`engines.node` is `>=22`. Support for a line is dropped in a minor release once it reaches
+end of life. The `.nvmrc` pins the recommended development version.
 
 ## Install
 
@@ -133,7 +140,7 @@ Other notable changes:
 - `WEEKDAYS_NE` and `WEEKDAYS_EN` name tables are exported.
 - Non-integer / `NaN` indexes and invalid `Date`s now throw a `RangeError` instead of
   producing `undefined` names.
-- Requires Node.js 18 or newer.
+- Requires Node.js 22 or newer (see the support policy above).
 - The Tuesday typo in the published 0.1.4 (`मगलवार`, missing anusvara) is fixed, and the
   full names use the `-बार` suffix (`मंगलबार`, `आइतबार`, ...).
 
