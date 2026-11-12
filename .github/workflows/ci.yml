@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Node ${{ matrix.node }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [18, 20, 22]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Test
+        run: npm test
+
+      - name: Build
+        run: npm run build
+
+      - name: Smoke test built output (CJS + ESM)
+        run: |
+          node -e "const f = require('./dist/index.js'); if (typeof f !== 'function') throw new Error('CJS default is not a function'); if (f(2, {lang:'en',type:'full'}) !== 'Mangalbaar') throw new Error('CJS call failed'); if (typeof f.getNepdayOfWeek !== 'function' || !f.WEEKDAYS_NE) throw new Error('CJS named exports missing');"
+          node --input-type=module -e "import f, { getNepdayOfWeek, WEEKDAYS_NE } from './dist/index.mjs'; if (f !== getNepdayOfWeek) throw new Error('ESM default/named mismatch'); if (f(2, {type:'full'}) !== WEEKDAYS_NE.full[2]) throw new Error('ESM call failed');"
